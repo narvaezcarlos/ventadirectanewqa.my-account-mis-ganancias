@@ -23,7 +23,9 @@ const Ordenes = ({ idLinker }: Props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/orderLinkers/${idLinker}`);
+      const response = await axios.get(
+				`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/orderLinkers/${idLinker}`
+			);
       setOrders(response.data);
     };
     

@@ -20,8 +20,8 @@ const Summary: React.FC<SummaryProps> = ({ userId }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get<SummaryData>(
-        `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
-      );
+				`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
+			);
       setSummary(result.data);
     };
 

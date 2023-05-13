@@ -16,8 +16,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ userId }) => {
   const getUser = React.useCallback(async () => {
     if (userId) {
       const response = await fetch(
-        `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
-      );
+				`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
+			);
       const userData = await response.json()
       setUser(userData);
     }

@@ -13,26 +13,26 @@ export const useVerifyUserId = (userId: string) => {
   useEffect(() => {
     setLoading(true);
 
-      fetch(`${baseURL}api/Ventadirectanew/getUserByUserId/${userId}`, {
-        method: 'GET',
-        headers: {
-        Accept: 'application/json',
-      },
-      })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Error al obtener los datos');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setStatus(Boolean(data?.isLinker));
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
+      fetch(`${baseURL}api/linkapp/getUserByUserId/${userId}`, {
+				method: 'GET',
+				headers: {
+					Accept: 'application/json',
+				},
+			})
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error('Error al obtener los datos');
+					}
+					return response.json();
+				})
+				.then((data) => {
+					setStatus(Boolean(data?.isLinker));
+					setLoading(false);
+				})
+				.catch((err) => {
+					setError(err);
+					setLoading(false);
+				});
   }, [userId]);
   return { status, error, loading };
 };
