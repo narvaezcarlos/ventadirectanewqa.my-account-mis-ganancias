@@ -20,14 +20,19 @@ const Ordenes = ({ idLinker }: Props) => {
   const [selectedMonth, setSelectedMonth] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
-
+  
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(`https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/orderLinkers/${idLinker}`);
-      setOrders(response.data);
-    };
-    
-    fetchData();
+    const cachedOrders = localStorage.getItem('orders');
+    if (cachedOrders) {
+      setOrders(JSON.parse(cachedOrders));
+    } else {
+      const fetchData = async () => {
+        const response = await axios.get(`https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/orderLinkers/${idLinker}`);
+        setOrders(response.data);
+        localStorage.setItem('orders', JSON.stringify(response.data));
+      };
+      fetchData();
+    }
   }, [idLinker]);
 
   useEffect(() => {
@@ -70,6 +75,7 @@ const Ordenes = ({ idLinker }: Props) => {
   return (
     <div className={styles.earnings__container}>
       <h2 className={styles.earnings__title}>Mis Ganancias</h2>
+      <p className={styles.earnings__label}> Recuerda que a través de Fisapay recibirás tus ganancias. Haz clic <a href="https://www.fisapay.com.co/#!/Sign-Up/Natural-User">aquí</a></p>
       <div className={styles.earnings__selectMonth}>
         <label className={styles.earnings__label} htmlFor="filter-month">Mes</label> <br/>
         <select className={styles.earnings__select} id="filter-month" value={selectedMonth} onChange={handleFilter}>
@@ -95,7 +101,7 @@ const Ordenes = ({ idLinker }: Props) => {
             <h3 className={styles.results__title}>{order.firstName}</h3>
             <p className={styles.results__text}><span className={styles.results__span}> Orden ID: </span> {order.orderId}</p>
             <p className={styles.results__text}><span className={styles.results__span}>Fecha de compra: </span> {new Date(order.orderDate).toLocaleDateString('es-ES', options)}</p>
-            <p className={styles.results__text}><span className={styles.results__span}>Total de la compra: $ </span>{order.orderValue.toLocaleString('es-CO', { style: 'currency', currency: 'COP' }).replace(/\.00$/, '')}</p>
+            <p className={styles.results__text}><span className={styles.results__span}>Total de la compra: $ </span>{order.orderValue.toLocaleString("es-ES", { useGrouping: true, maximumFractionDigits: 2, minimumFractionDigits: 2, style: 'currency', currency: 'EUR' })}</p>
           </div>
         ))}
       </div>

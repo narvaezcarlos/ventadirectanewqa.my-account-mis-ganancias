@@ -7,7 +7,7 @@
     "apollo-client": "^2.4.7",
     "axios": "^1.4.0",
     "exenv": "^1.2.2",
-    "graphql": "^14.0.2",
+    "graphql": "^16.6.0",
     "intl": "^1.2.5",
     "moment": "^2.22.2",
     "prop-types": "^15.8.1",

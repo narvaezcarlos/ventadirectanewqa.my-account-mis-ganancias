@@ -10,72 +10,74 @@
     height: 100%;
   }
 
-  .btn__container{
+  .btn__container {
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
   }
 
-.btn__insta,
-  .btn__face{
-width: 162px;
-height: 48px;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 24px;
-display: flex;
-align-items: center;
-text-align: center;
-color: #FFFFFF;
-background: #170341;
-border-radius: 16px;
-cursor: pointer;
-display: flex;
-justify-content: space-evenly;
+  .btn__insta,
+  .btn__face {
+    width: 162px;
+    height: 48px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    background: #170341;
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-evenly;
   }
 
   @media only screen and (max-width: 768px) {
+
     .btn__insta,
-  .btn__face{
-width: 50px;
-margin: 10px 0;
-  }
+    .btn__face {
+      width: 50px;
+      margin: 10px 0;
+    }
 
-  .container__nolinker {
-    height: 50%;
-  }
-.btn__container{
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+    .container__nolinker {
+      height: 50%;
+    }
 
-  .text__btn{
-    display: none;
-  }
-  }
+    .btn__container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-
-   /* Estilos Mis ganancias*/
+    .text__btn {
+      display: none;
+    }
+  }
+  
+  /* Estilos Mis ganancias*/
   .ordenes__summary {
     display: flex;
     justify-content: space-between;
   }
 
-  .spinner__container{
+  .spinner__container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
-  .spinner__container__text{
+
+  .spinner__container__text {
     font-style: normal;
-  font-weight: 600;
-  font-size: 34px;
-  line-height: 36px;
-  color: #170341
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 36px;
+    color: #170341
   }
 
   /* Estilos Niveles*/
@@ -93,6 +95,7 @@ margin: 10px 0;
     font-size: 24px;
     line-height: 36px;
     color: #170341;
+    padding-left: 30px;
   }
 
   .niveles {
@@ -116,6 +119,8 @@ margin: 10px 0;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
+    position: relative;
+    left: 25%;
   }
 
   .niveles__container__description {
@@ -137,9 +142,10 @@ margin: 10px 0;
   @media only screen and (max-width: 768px) {
 
     .ordenes__summary {
-      flex-direction: column;
+      flex-direction: column-reverse;
       width: 90%;
-      margin: 0 auto;
+      margin: 10px auto;
+      border-top: solid 1px #000 ;
     }
 
     .niveles__niveles {
@@ -162,6 +168,10 @@ margin: 10px 0;
 
     }
 
+    .niveles__title {
+      padding-left: 30px;
+    }
+
     .niveles__description {
       text-align: start;
     }
@@ -169,6 +179,10 @@ margin: 10px 0;
     .niveles__progress__bar {
       display: flex;
       position: relative;
+    }
+
+    .niveles__level__title {
+      position: static;
     }
 
   }

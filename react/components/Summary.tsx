@@ -17,15 +17,35 @@ interface SummaryProps {
 const Summary: React.FC<SummaryProps> = ({ userId }) => {
   const [summary, setSummary] = useState<SummaryData | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get<SummaryData>(
-        `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
-      );
-      setSummary(result.data);
-    };
+  const saveDataToLocalStorageSummary = (data: SummaryData, key: string) => {
+    localStorage.setItem(key, JSON.stringify(data));
+  };
 
-    fetchData();
+  const getDataFromLocalStorageSummary = (key: string): SummaryData | null => {
+    const data = localStorage.getItem(key);
+    if (data) {
+      return JSON.parse(data);
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    const key = "summaryData";
+    const storedSummaryData = getDataFromLocalStorageSummary(key);
+
+    if (storedSummaryData) {
+      setSummary(storedSummaryData);
+    } else {
+      const fetchData = async () => {
+        const result = await axios.get<SummaryData>(
+          `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
+        );
+        setSummary(result.data);
+        saveDataToLocalStorageSummary(result.data, key);
+      };
+
+      fetchData();
+    }
   }, [userId]);
 
   if (!summary) {
@@ -40,13 +60,13 @@ const link = summary.linkerId
 
 const today = new Date();
 const createdDate = new Date(summary.createdIn);
-const createdMonth = createdDate.getMonth();
+const createdMonth = createdDate.getMonth()- 1;
 const createdYear = createdDate.getFullYear();
 const firstDayOfMonth = new Date(createdYear, createdMonth, 1);
 const months = Math.round((today.getTime() - firstDayOfMonth.getTime()) / (30 * 24 * 60 * 60 * 1000));
 
-const earnings = summary.ganancia;
-const contable = earnings.toLocaleString("es-ES", {useGrouping: true})
+const earnings = summary.ganancia ? summary.ganancia : 0;
+const contable = earnings.toLocaleString("es-ES", {useGrouping: true});
 
   return (
     <div className={style.summary__container}>
@@ -56,7 +76,7 @@ const contable = earnings.toLocaleString("es-ES", {useGrouping: true})
       <p className={style.summary__paragraph1}><span className={style.summary__span}>Fecha de ingreso: </span>  {createdDate.toLocaleDateString()}</p>
       <p className={style.summary__paragraph1}><span className={style.summary__span}>Fecha de hoy: </span> {today.toLocaleDateString()}</p>
       <p className={style.summary__paragraph1}> <span className={style.summary__span}>Meses como linker: </span>{months}{months === 1 ? " mes" : " meses"}</p>
-      <p className={style.summary__paragraph}>En 1 mes has registrado el siguiente total de ganancias como Linkerio:</p>
+      <p className={style.summary__paragraph}>En 1 mes has registrado el siguiente total de ganancias como Linker:</p>
       <div className={style.summary__earnings}>
        <p className={style.summary__contable}>{`$${contable}`}</p> 
       </div>
