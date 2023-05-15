@@ -3,13 +3,14 @@
     max-width: 30%;
     height: 50%;
     padding: 9px 20px;
-    background: #170341;
+    background: #fff;
     box-shadow: 0px 6px 6px rgba(135, 135, 135, 0.15);
     margin-top: 10%;
+    border: 1px solid #170341;
 }
 
 .summary__title {
-    color: #fff;
+    color: #170341;
     font-style: bold;
     font-size: 24px;
     line-height: 100%;
@@ -18,7 +19,7 @@
 }
 
 .summary__paragraph {
-    color: #fff;
+    color: #170341;
     font-style: bold;
     font-size: 16px;
     line-height: 100%;
@@ -27,7 +28,7 @@
 }
 
 .summary__paragraph1 {
-    color: #fff;
+    color: #170341;
     font-style: bold;
     font-size: 16px;
     line-height: 36px;
@@ -72,8 +73,8 @@
 
 @media only screen and (max-width: 768px) {
     .summary__container {
-        max-width: 80%;
-        margin: 10px auto;
+        max-width: 100%;
+        margin: 40px auto;
     }
 
     .summary__earnings {

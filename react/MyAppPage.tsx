@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Route } from 'vtex.my-account-commons/Router'
-import MisGanancias from './components/MisGanancias'
+import MisGanancias from './components/MisGananciasVi'
 
 
 

@@ -1,24 +1,20 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 
-export const useVerifyUserId = (userId: string) => {
-
+export const useVerifyUserId = () => {
   const [status, setStatus] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const baseURL = 'https://websvrx.hermeco.com/offcorsspersonalization/public/'
+  const baseURL = 'https://websvrx.hermeco.com/offcorsspersonalization/public/';
 
-
-  useEffect(() => {
+  const fetchData = (userId:string) => {
     setLoading(true);
-
-      fetch(`${baseURL}api/Ventadirectanew/getUserByUserId/${userId}`, {
-        method: 'GET',
-        headers: {
+    fetch(`${baseURL}api/Ventadirectanew/getUserByUserId/${userId}`, {
+      method: 'GET',
+      headers: {
         Accept: 'application/json',
       },
-      })
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error('Error al obtener los datos');
@@ -27,12 +23,17 @@ export const useVerifyUserId = (userId: string) => {
       })
       .then((data) => {
         setStatus(Boolean(data?.isLinker));
-        setLoading(false);
+        console.log('data is linker',data?.isLinker )
       })
       .catch((err) => {
         setError(err);
+      })
+      .finally(() => {
         setLoading(false);
       });
-  }, [userId]);
-  return { status, error, loading };
+      console.log('meestoy render')
+  };
+
+  return { status, error, loading, fetchData };
+ 
 };

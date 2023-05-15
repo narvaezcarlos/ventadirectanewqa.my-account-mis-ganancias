@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from './progressBar.css';
+import styles from "./progressBar.css";
 
 interface ProgressBarProps {
   userId: string;
@@ -12,14 +12,20 @@ interface User {
 const ProgressBar: React.FC<ProgressBarProps> = ({ userId }) => {
   const [user, setUser] = useState<User | null>(null);
 
-
   const getUser = React.useCallback(async () => {
     if (userId) {
-      const response = await fetch(
-        `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
-      );
-      const userData = await response.json()
-      setUser(userData);
+      const cachedData = localStorage.getItem(`user_${userId}`);
+      if (cachedData) {
+        const userData = JSON.parse(cachedData);
+        setUser(userData);
+      } else {
+        const response = await fetch(
+          `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
+        );
+        const userData = await response.json();
+        localStorage.setItem(`user_${userId}`, JSON.stringify(userData));
+        setUser(userData);
+      }
     }
   }, [userId]);
 
@@ -32,14 +38,14 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ userId }) => {
       return false;
     }
 
-    const ganancia = user.ganancia
+    const ganancia = user.ganancia;
     switch (index) {
       case 0:
         return ganancia > 250000 && ganancia <= 500000;
       case 1:
         return ganancia >= 500001 && ganancia <= 999999;
       case 2:
-        return ganancia >= 1000000 ;
+        return ganancia >= 1000000;
       default:
         return false;
     }

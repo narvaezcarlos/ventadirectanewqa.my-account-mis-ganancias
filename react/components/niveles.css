@@ -58,8 +58,7 @@
       display: none;
     }
   }
-
-
+  
   /* Estilos Mis ganancias*/
   .ordenes__summary {
     display: flex;
@@ -96,6 +95,7 @@
     font-size: 24px;
     line-height: 36px;
     color: #170341;
+    padding-left: 30px;
   }
 
   .niveles {
@@ -142,9 +142,10 @@
   @media only screen and (max-width: 768px) {
 
     .ordenes__summary {
-      flex-direction: column;
+      flex-direction: column-reverse;
       width: 90%;
-      margin: 0 auto;
+      margin: 10px auto;
+      border-top: solid 1px #000 ;
     }
 
     .niveles__niveles {
@@ -165,6 +166,10 @@
     .niveles__container__description {
       width: 80%;
 
+    }
+
+    .niveles__title {
+      padding-left: 30px;
     }
 
     .niveles__description {
