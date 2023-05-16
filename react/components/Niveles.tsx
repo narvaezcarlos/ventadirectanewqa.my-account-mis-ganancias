@@ -16,37 +16,21 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
   const [userLevel, setUserLevel] = useState<number | null>(null);
 
   const getData = React.useCallback(async () => {
-<<<<<<< HEAD
-    const data = await fetch(
-      "https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getNiveles"
-    );
-    const response = await data.json();
-    setNiveles(response);
-=======
     const storedData = localStorage.getItem('nivelesData');
     if (storedData) {
       setNiveles(JSON.parse(storedData));
     } else {
       const data = await fetch(
-        "https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getNiveles"
+        "https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getNiveles"
       );
       const response = await data.json();
       setNiveles(response);
       localStorage.setItem('nivelesData', JSON.stringify(response));
     }
->>>>>>> dev
   }, []);
 
   const getUserLevel = React.useCallback(async () => {
     if (userId) {
-<<<<<<< HEAD
-      const response = await fetch(
-				`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
-			);
-      const userData = await response.json();
-      const userLevel = userData.nivel;
-      setUserLevel(userLevel);
-=======
       const storedUserData = localStorage.getItem(`userLevelData_${userId}`);
       if (storedUserData) {
         const userData = JSON.parse(storedUserData);
@@ -54,14 +38,13 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
         setUserLevel(userLevel);
       } else {
         const response = await fetch(
-          `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
-        );
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
+				);
         const userData = await response.json();
         const userLevel = userData.nivel;
         setUserLevel(userLevel);
         localStorage.setItem(`userLevelData_${userId}`, JSON.stringify(userData));
       }
->>>>>>> dev
     }
   }, [userId]);
 

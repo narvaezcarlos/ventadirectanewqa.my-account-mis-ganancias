@@ -22,28 +22,19 @@ const Ordenes = ({ idLinker }: Props) => {
   const [pageSize, setPageSize] = useState<number>(10);
   
   useEffect(() => {
-<<<<<<< HEAD
-    const fetchData = async () => {
-      const response = await axios.get(
-				`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/orderLinkers/${idLinker}`
-			);
-      setOrders(response.data);
-    };
-    
-    fetchData();
-=======
     const cachedOrders = localStorage.getItem('orders');
     if (cachedOrders) {
       setOrders(JSON.parse(cachedOrders));
     } else {
       const fetchData = async () => {
-        const response = await axios.get(`https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/orderLinkers/${idLinker}`);
+        const response = await axios.get(
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/orderLinkers/${idLinker}`
+				);
         setOrders(response.data);
         localStorage.setItem('orders', JSON.stringify(response.data));
       };
       fetchData();
     }
->>>>>>> dev
   }, [idLinker]);
 
   useEffect(() => {

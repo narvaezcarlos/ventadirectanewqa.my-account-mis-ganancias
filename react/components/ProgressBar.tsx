@@ -14,26 +14,18 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ userId }) => {
 
   const getUser = React.useCallback(async () => {
     if (userId) {
-<<<<<<< HEAD
-      const response = await fetch(
-				`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
-			);
-      const userData = await response.json()
-      setUser(userData);
-=======
       const cachedData = localStorage.getItem(`user_${userId}`);
       if (cachedData) {
         const userData = JSON.parse(cachedData);
         setUser(userData);
       } else {
         const response = await fetch(
-          `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
-        );
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
+				);
         const userData = await response.json();
         localStorage.setItem(`user_${userId}`, JSON.stringify(userData));
         setUser(userData);
       }
->>>>>>> dev
     }
   }, [userId]);
 

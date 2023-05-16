@@ -30,14 +30,6 @@ const Summary: React.FC<SummaryProps> = ({ userId }) => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-    const fetchData = async () => {
-      const result = await axios.get<SummaryData>(
-				`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
-			);
-      setSummary(result.data);
-    };
-=======
     const key = "summaryData";
     const storedSummaryData = getDataFromLocalStorageSummary(key);
 
@@ -46,12 +38,11 @@ const Summary: React.FC<SummaryProps> = ({ userId }) => {
     } else {
       const fetchData = async () => {
         const result = await axios.get<SummaryData>(
-          `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
-        );
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
+				);
         setSummary(result.data);
         saveDataToLocalStorageSummary(result.data, key);
       };
->>>>>>> dev
 
       fetchData();
     }
