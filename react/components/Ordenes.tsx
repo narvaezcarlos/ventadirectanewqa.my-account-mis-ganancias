@@ -28,7 +28,9 @@ const Ordenes = ({ idLinker }: Props) => {
       console.log('aqui se esta renderizan los datos del sesion storage')
     } else {
       const fetchData = async () => {
-        const response = await axios.get(`https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/orderLinkers/${idLinker}`);
+        const response = await axios.get(
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/orderLinkers/${idLinker}`
+				);
         setOrders(response.data);
         console.log('aqui se esta ejecutando la consulta orders')
         sessionStorage.setItem('orders', JSON.stringify(response.data));

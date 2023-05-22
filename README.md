@@ -1,2 +1,2 @@
-# ventadirectanewqa.my-account-mis-ganancias
-# ventadirectanewqa.my-account-mis-ganancias
+# ventadirectanew.my-account-mis-ganancias
+# ventadirectanew.my-account-mis-ganancias
