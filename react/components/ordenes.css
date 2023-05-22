@@ -1,76 +1,76 @@
-.earnings__container{
+.earnings__container {
     min-width: 60%;
-    }
-    .earnings__title{
-        font-style: normal;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 36px;
-        color: #170341;
-    }
-    
-    .earnings__subtitle{
-        font-size: 16px;
-        line-height: 24px;
-        color: #170341;
-    }
-    
-    .earnings__label{
-        font-size: 16px;
-        line-height: 24px;
-        color: #404040;
-        font-weight: 600;
-    }
-    
-    .earnings__select{
-       border: solid 2px #404040;
-       border-radius: 30px;
-       margin: 10px 0px;
-       padding: 5px;
-       width: 50%;
-    }
-    
-    .results {
+}
+
+.earnings__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #170341;
+}
+
+.earnings__subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    color: #170341;
+}
+
+.earnings__label {
+    font-size: 16px;
+    line-height: 24px;
+    color: #404040;
+    font-weight: 600;
+}
+
+.earnings__select {
+    border: solid 2px #404040;
+    border-radius: 30px;
+    margin: 10px 0px;
+    padding: 5px;
+    width: 50%;
+}
+
+.results {
+    width: 100%;
+    height: auto;
+}
+
+.results__container {
+    box-shadow: 0px 6px 5px 2px rgba(135, 135, 135, 0.15);
+    margin: 10px 0px;
+    padding: 5px 15px;
+    width: 100%;
+    border-radius: 16px;
+}
+
+.results__title {
+    font-size: 24px;
+    line-height: 36px;
+    color: #170341;
+}
+
+.results__text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #404040;
+}
+
+.results__span {
+    font-weight: 600;
+}
+
+.earnings__select__label {
+    border: solid 2px #404040;
+    border-radius: 10px;
+    margin: 10px 0px;
+    padding: 5px;
+    width: 20px;
+}
+
+@media (max-width: 768px) {
+    .earnings__container {
         width: 100%;
-        height: auto;
-    }
-    
-    .results__container{
-        box-shadow: 0px 6px 5px 2px rgba(135, 135, 135, 0.15);
-        margin: 10px 0px;
-        padding: 5px 15px;
-        width: 100%;
-        border-radius: 16px;
-    } 
-    
-    .results__title{
-        font-size: 24px;
-        line-height: 36px;
-        color: #170341;
-    }
-    .results__text{
-        font-size: 16px;
-        line-height: 24px;
-        color: #404040;
-    }
-    
-    .results__span{
-        font-weight: 600;
-    }
-    
-    .earnings__select__label{
-        border: solid 2px #404040;
-        border-radius: 10px;
-        margin: 10px 0px;
-        padding: 5px;
-        width: 20px;
-    }
-    
-    @media (max-width: 768px) {
-    
-        .earnings__container{
-            width: 100%;
         margin: 0 auto;
-        }
-    
     }
+}

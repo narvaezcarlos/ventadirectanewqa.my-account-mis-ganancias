@@ -7,7 +7,6 @@ export const useVerifyUserId = (userId: string) => {
   useEffect(() => {
       fetch(`${baseURL}api/Ventadirectanew/getNiveles`)
 				.then((response) => {
-					console.log('responsedata', response);
 				})
 				.catch((err) => {});
   }, []);

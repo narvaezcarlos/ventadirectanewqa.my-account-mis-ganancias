@@ -1,38 +1,40 @@
 .progress__bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 16px;
-    width: 100%;
-    height: 5px;
-    background-color: #f0f0f0;
-    position: relative;
-    border-radius: 30px;
-  }
-  .progress__bar.active{
-    background-color: #170341;
-  }
-  
-  .progress__bar__step {
-    position: relative;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .progress__bar__step__circle {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color:#170341;
-    z-index: 2;
-  }
-  
-  .progress__bar__step__circle.active {
-    background-color:  #E048B8;
-  }
-  /*
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  width: 100%;
+  height: 5px;
+  background-color: #f0f0f0;
+  position: relative;
+  border-radius: 30px;
+}
+
+.progress__bar.active {
+  background-color: #170341;
+}
+
+.progress__bar__step {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress__bar__step__circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #170341;
+  z-index: 2;
+}
+
+.progress__bar__step__circle.active {
+  background-color: #E048B8;
+}
+
+/*
   .progress__bar__step__bar {
     position: absolute;
     top: 50%;
@@ -42,30 +44,32 @@
     background-color: blue;
     z-index: 1;
   }*/
-  
-  .progress__bar__step__bar.active {
-    background-color: #170341;
-  }
-  
-  @media (max-width: 768px) {
-    .progress__bar {
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      height: 100%;
-      width: 5px;
-      margin-top: 0;
-      margin: 0;
-      position: absolute;
-    }
-    .progress__bar__step {
-      margin: 29px -3px;
-    }
 
-    .progress__bar__step {
-      align-items: flex-start;
-    }
-    /*
+.progress__bar__step__bar.active {
+  background-color: #170341;
+}
+
+@media (max-width: 768px) {
+  .progress__bar {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    width: 5px;
+    margin-top: 0;
+    margin: 0;
+    position: absolute;
+  }
+
+  .progress__bar__step {
+    margin: 29px -3px;
+  }
+
+  .progress__bar__step {
+    align-items: flex-start;
+  }
+
+  /*
     .progress__bar__step__bar {
       width: 15px;
       background-color: red;
@@ -75,4 +79,4 @@
       left: 30%;
       transform: translate(-20%);
     }*/
-  }
+}

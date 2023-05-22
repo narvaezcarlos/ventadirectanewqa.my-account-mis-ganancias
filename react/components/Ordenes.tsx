@@ -20,21 +20,19 @@ const Ordenes = ({ idLinker }: Props) => {
   const [selectedMonth, setSelectedMonth] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
-  
+
   useEffect(() => {
     const cachedOrders = sessionStorage.getItem('orders');
     if (cachedOrders) {
       setOrders(JSON.parse(cachedOrders));
-      console.log('aqui se esta renderizan los datos del sesion storage')
     } else {
       const fetchData = async () => {
         const response = await axios.get(
 					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/orderLinkers/${idLinker}`
 				);
         setOrders(response.data);
-        console.log('aqui se esta ejecutando la consulta orders')
         sessionStorage.setItem('orders', JSON.stringify(response.data));
-        
+
       };
       fetchData();
     }
@@ -53,7 +51,7 @@ const Ordenes = ({ idLinker }: Props) => {
       const sorted = orders.sort((a, b) => new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime());
       setFilteredOrders(sorted);
     }
-    setCurrentPage(1); 
+    setCurrentPage(1);
   }, [orders, selectedMonth]);
 
   const totalCompletedOrders = filteredOrders ? filteredOrders.length : 0;
