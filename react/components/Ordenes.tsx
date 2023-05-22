@@ -29,7 +29,7 @@ const Ordenes = ({ idLinker }: Props) => {
     } else {
       const fetchData = async () => {
         const response = await axios.get(
-					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/orderLinkers/${idLinker}`
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/orderLinkers/${idLinker}`
 				);
         setOrders(response.data);
         console.log('aqui se esta ejecutando la consulta orders')
