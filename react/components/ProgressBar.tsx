@@ -17,7 +17,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ userId }) => {
     if (cachedData) {
       const userData = JSON.parse(cachedData);
       setUser(userData);
-      console.log('aqui se renderizan los datos de la sesión storage en progressBar');
     } else {
       try {
         const response = await fetch(
@@ -27,7 +26,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ userId }) => {
         if (response.ok) {
           setUser(responseData);
           sessionStorage.setItem(`ProgressBarUser_${userId}`, JSON.stringify(responseData));
-          console.log('aqui se llaman los datos a la api en progressbar');
         } else {
           console.error('Error en la respuesta de la API:', responseData);
         }
@@ -36,7 +34,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ userId }) => {
       }
     }
   }, []);
-  
 
   useEffect(() => {
     getUser();

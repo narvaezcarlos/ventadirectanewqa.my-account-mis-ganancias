@@ -23,7 +23,6 @@ export const useVerifyUserId = () => {
 			})
 			.then((data) => {
 				setStatus(Boolean(data?.isLinker));
-				console.log('data is linker', data?.isLinker);
 			})
 			.catch((err) => {
 				setError(err);
@@ -31,7 +30,6 @@ export const useVerifyUserId = () => {
 			.finally(() => {
 				setLoading(false);
 			});
-      console.log('meestoy render')
   };
 
   return { status, error, loading, fetchData };

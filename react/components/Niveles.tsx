@@ -19,7 +19,6 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
     const storedData = sessionStorage.getItem('nivelesData');
     if (storedData) {
       setNiveles(JSON.parse(storedData));
-      console.log('aqui se renderizan los datos de la sesion storage en niveles')
     } else {
       const data = await fetch(
 				'https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getNiveles'
@@ -27,7 +26,6 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
       const response = await data.json();
       setNiveles(response);
       sessionStorage.setItem('nivelesData', JSON.stringify(response));
-      console.log('aqui llama a la consulta niveles')
     }
   }, []);
 
@@ -38,7 +36,6 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
         const userData = JSON.parse(storedUserData);
         const userLevel = userData.nivel;
         setUserLevel(userLevel);
-        console.log('aqui se renderizan sesion storage niveles')
 
       } else {
         const response = await fetch(
@@ -48,7 +45,6 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
         const userLevel = userData.nivel;
         setUserLevel(userLevel);
         sessionStorage.setItem('userlevel', JSON.stringify(userData));
-        console.log('aqui se esta ejecutando la consulta niveles del usuario')
       }
     }
   }, [userId]);
