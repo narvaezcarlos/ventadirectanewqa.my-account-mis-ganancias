@@ -13,25 +13,34 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ userId }) => {
   const [user, setUser] = useState<User | null>(null);
 
   const getUser = React.useCallback(async () => {
-    if (userId) {
-      const cachedData = localStorage.getItem(`user_${userId}`);
-      if (cachedData) {
-        const userData = JSON.parse(cachedData);
-        setUser(userData);
-      } else {
+    const cachedData = sessionStorage.getItem(`ProgressBarUser_${userId}`);
+    if (cachedData) {
+      const userData = JSON.parse(cachedData);
+      setUser(userData);
+      console.log('aqui se renderizan los datos de la sesión storage en progressBar');
+    } else {
+      try {
         const response = await fetch(
           `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
         );
-        const userData = await response.json();
-        localStorage.setItem(`user_${userId}`, JSON.stringify(userData));
-        setUser(userData);
+        const responseData = await response.json();
+        if (response.ok) {
+          setUser(responseData);
+          sessionStorage.setItem(`ProgressBarUser_${userId}`, JSON.stringify(responseData));
+          console.log('aqui se llaman los datos a la api en progressbar');
+        } else {
+          console.error('Error en la respuesta de la API:', responseData);
+        }
+      } catch (error) {
+        console.error('Error al obtener los datos de la API:', error);
       }
     }
-  }, [userId]);
+  }, []);
+  
 
   useEffect(() => {
     getUser();
-  }, [getUser]);
+  }, [userId, getUser]);
 
   function getActiveCircle(index: number) {
     if (!user) {

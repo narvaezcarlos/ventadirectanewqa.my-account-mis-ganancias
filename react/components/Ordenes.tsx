@@ -19,17 +19,20 @@ const Ordenes = ({ idLinker }: Props) => {
   const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
   const [selectedMonth, setSelectedMonth] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(10);
+  const [pageSize, setPageSize] = useState<number>(5);
   
   useEffect(() => {
-    const cachedOrders = localStorage.getItem('orders');
+    const cachedOrders = sessionStorage.getItem('orders');
     if (cachedOrders) {
       setOrders(JSON.parse(cachedOrders));
+      console.log('aqui se esta renderizan los datos del sesion storage')
     } else {
       const fetchData = async () => {
         const response = await axios.get(`https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/orderLinkers/${idLinker}`);
         setOrders(response.data);
-        localStorage.setItem('orders', JSON.stringify(response.data));
+        console.log('aqui se esta ejecutando la consulta orders')
+        sessionStorage.setItem('orders', JSON.stringify(response.data));
+        
       };
       fetchData();
     }
@@ -75,7 +78,7 @@ const Ordenes = ({ idLinker }: Props) => {
   return (
     <div className={styles.earnings__container}>
       <h2 className={styles.earnings__title}>Mis Ganancias</h2>
-      <p className={styles.earnings__label}> Recuerda que a través de Fisapay recibirás tus ganancias. Haz clic <a href="https://www.fisapay.com.co/#!/Sign-Up/Natural-User">aquí</a></p>
+      <p className={styles.earnings__label}> Recuerda que a través de Fisapay recibirás tus ganancias. Haz clic <a href="https://www.fisapay.com.co/#!/Sign-Up/Natural-User" target='_blank' >aquí</a></p>
       <div className={styles.earnings__selectMonth}>
         <label className={styles.earnings__label} htmlFor="filter-month">Mes</label> <br/>
         <select className={styles.earnings__select} id="filter-month" value={selectedMonth} onChange={handleFilter}>
@@ -108,9 +111,10 @@ const Ordenes = ({ idLinker }: Props) => {
       <div className={styles.earnings__pageSize}>
   <label className={styles.earnings__label} htmlFor="page-size">Resultados por página </label>
   <select className={styles.earnings__select__label} id="page-size" value={pageSize} onChange={handlePageSizeChange}>
-    <option value={10}>10</option>
+    <option value={5}>5</option>
     <option value={20}>20</option>
     <option value={50}>50</option>
+    <option value={100}>100</option>
   </select>
 </div>
 

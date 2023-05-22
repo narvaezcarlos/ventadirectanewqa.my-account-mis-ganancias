@@ -79,6 +79,18 @@
     line-height: 36px;
     color: #170341
   }
+  .btn__return{
+    border-color: #170341;
+    border-radius: 16px;
+    padding: 8px 16px;
+    background-color: #170341;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .container__btn__return{
+    padding: 1rem;
+  }
 
   /* Estilos Niveles*/
   .niveles__niveles {}
@@ -142,7 +154,7 @@
   @media only screen and (max-width: 768px) {
 
     .ordenes__summary {
-      flex-direction: column-reverse;
+      flex-direction: column;
       width: 90%;
       margin: 10px auto;
       border-top: solid 1px #000 ;

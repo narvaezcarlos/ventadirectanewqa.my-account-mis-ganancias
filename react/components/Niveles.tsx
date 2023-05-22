@@ -16,26 +16,30 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
   const [userLevel, setUserLevel] = useState<number | null>(null);
 
   const getData = React.useCallback(async () => {
-    const storedData = localStorage.getItem('nivelesData');
+    const storedData = sessionStorage.getItem('nivelesData');
     if (storedData) {
       setNiveles(JSON.parse(storedData));
+      console.log('aqui se renderizan los datos de la sesion storage en niveles')
     } else {
       const data = await fetch(
         "https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getNiveles"
       );
       const response = await data.json();
       setNiveles(response);
-      localStorage.setItem('nivelesData', JSON.stringify(response));
+      sessionStorage.setItem('nivelesData', JSON.stringify(response));
+      console.log('aqui llama a la consulta niveles')
     }
   }, []);
 
   const getUserLevel = React.useCallback(async () => {
     if (userId) {
-      const storedUserData = localStorage.getItem(`userLevelData_${userId}`);
+      const storedUserData = sessionStorage.getItem('userlevel');
       if (storedUserData) {
         const userData = JSON.parse(storedUserData);
         const userLevel = userData.nivel;
         setUserLevel(userLevel);
+        console.log('aqui se renderizan sesion storage niveles')
+
       } else {
         const response = await fetch(
           `https://websvrx.hermeco.com/offcorsspersonalization/public/api/Ventadirectanew/getUserByUserId/${userId}`
@@ -43,7 +47,8 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
         const userData = await response.json();
         const userLevel = userData.nivel;
         setUserLevel(userLevel);
-        localStorage.setItem(`userLevelData_${userId}`, JSON.stringify(userData));
+        sessionStorage.setItem('userlevel', JSON.stringify(userData));
+        console.log('aqui se esta ejecutando la consulta niveles del usuario')
       }
     }
   }, [userId]);
@@ -60,7 +65,7 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
           Mi nivel
         </h2>
         <div className={styles.niveles__progress__bar}>
-          <ProgressBar userId={userId} />
+        <ProgressBar userId={userId} />
             <div className={styles.niveles}>
           {niveles.map((nivel) => (
             <div className={styles.niveles__container} key={nivel.nivel}>
