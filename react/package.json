@@ -10,6 +10,7 @@
     "graphql": "^16.6.0",
     "intl": "^1.2.5",
     "moment": "^2.22.2",
+    "numbro": "^2.3.6",
     "prop-types": "^15.8.1",
     "query-string": "^6.3.0",
     "react": "^16.4.1",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/graphql": "^14.5.0",
     "@types/node": "^20.1.1",
+    "@types/numbro": "^1.9.3",
     "@types/react": "^18.2.6",
     "@types/react-intl": "^3.0.0",
     "typescript": "3.9.7"

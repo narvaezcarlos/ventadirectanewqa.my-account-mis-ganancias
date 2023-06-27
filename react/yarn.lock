@@ -311,6 +311,13 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-20.1.1.tgz#afc492e8dbe7f672dd3a13674823522b467a45ad"
   integrity sha512-uKBEevTNb+l6/aCQaKVnUModfEMjAl98lw2Si9P5y4hLu9tm6AlX2ZIoXZX6Wh9lJueYPrGPKk5WMCNHg/u6/A==
 
+"@types/numbro@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.npmjs.org/@types/numbro/-/numbro-1.9.3.tgz#94dda74a7a775ae65e8c7f9a6b3bb5b7213f52d3"
+  integrity sha512-B9ZxQcz+8Fo5/HNYhXNHqKmaPNBSibYDZDkXKUzSTae5GKSuFdmwOFCn1YicAOAFbg+lkRgrrJgZB7RnkDp5xQ==
+  dependencies:
+    numbro "*"
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.npmjs.org/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
@@ -561,6 +568,11 @@ babel-runtime@^6.26.0:
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
+
+bignumber.js@^8.1.1:
+  version "8.1.1"
+  resolved "https://registry.npmjs.org/bignumber.js/-/bignumber.js-8.1.1.tgz#4b072ae5aea9c20f6730e4e5d529df1271c4d885"
+  integrity sha512-QD46ppGintwPGuL1KqmwhR0O+N2cZUg8JG/VzwI2e28sM9TqHjQB10lI4QAaMHVbLzwVLLAwEglpKPViWX+5NQ==
 
 browserslist@^4.12.0:
   version "4.21.5"
@@ -1388,6 +1400,13 @@ num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npmjs.org/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha512-Y1wZESM7VUThYY+4W+X4ySH2maqcA+p7UR+w8VWNWVAd6lwuXXWz/w/Cz43J/dI2I+PS6wD5N+bJUF+gjWvIqg==
+
+numbro@*, numbro@^2.3.6:
+  version "2.3.6"
+  resolved "https://registry.npmjs.org/numbro/-/numbro-2.3.6.tgz#4bd622ebe59ccbc49dad365c5b9eed200781fa21"
+  integrity sha512-pxpoTT3hVxQGaOA2RTzXR/muonQNd1K1HPJbWo7QOmxPwiPmoFCFfsG9XXgW3uqjyzezJ0P9IvCPDXUtJexjwg==
+  dependencies:
+    bignumber.js "^8.1.1"
 
 object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"

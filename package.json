@@ -2,6 +2,8 @@
   "devDependencies": {
     "@types/graphql": "^14.5.0",
     "@types/node": "^20.1.1",
+    "@types/numbro": "^1.9.3",
+    "@types/numeral": "^2.0.2",
     "@types/react": "^18.2.6",
     "@types/react-intl": "^3.0.0",
     "typescript": "^5.0.4"
@@ -13,6 +15,8 @@
     "axios": "^1.4.0",
     "graphql": "^16.6.0",
     "intl": "^1.2.5",
+    "numbro": "^2.3.6",
+    "numeral": "^2.0.6",
     "prop-types": "^15.8.1",
     "react-intl": "^5.0.4-alpha.0"
   }
