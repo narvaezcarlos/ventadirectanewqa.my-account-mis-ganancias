@@ -14,6 +14,7 @@ interface NivelesProps {
 const Niveles: React.FC<NivelesProps> = ({ userId }) => {
   const [niveles, setNiveles] = useState<Nivel[]>([]);
   const [userLevel, setUserLevel] = useState<number | null>(null);
+  const [linkerType, setLinkerType] = useState<string | null>(null);
 
   const getData = React.useCallback(async () => {
     const storedData = sessionStorage.getItem('nivelesData');
@@ -21,7 +22,7 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
       setNiveles(JSON.parse(storedData));
     } else {
       const data = await fetch(
-				'https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getNiveles'
+				'https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/getNiveles'
 			);
       const response = await data.json();
       setNiveles(response);
@@ -34,15 +35,16 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
       const storedUserData = sessionStorage.getItem('userlevel');
       if (storedUserData) {
         const userData = JSON.parse(storedUserData);
+        console.log(userData, 'userdata')
         const userLevel = userData.nivel;
         setUserLevel(userLevel);
-
       } else {
         const response = await fetch(
-					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/getUserByUserId/${userId}`
 				);
         const userData = await response.json();
         const userLevel = userData.nivel;
+        setLinkerType(userData.linkerType); 
         setUserLevel(userLevel);
         sessionStorage.setItem('userlevel', JSON.stringify(userData));
       }
@@ -56,12 +58,15 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
 
   return (
     <>
+    {linkerType !== "Tendero" && (
   <div className={styles.niveles__niveles}>
+  
         <h2 className={styles.niveles__title}>
           Mi nivel
         </h2>
         <div className={styles.niveles__progress__bar}>
         <ProgressBar userId={userId} />
+       
             <div className={styles.niveles}>
           {niveles.map((nivel) => (
             <div className={styles.niveles__container} key={nivel.nivel}>
@@ -91,7 +96,7 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
             ))}
         </div>
         </div>
-    </div>
+    </div>)}
     </>
     );
 };

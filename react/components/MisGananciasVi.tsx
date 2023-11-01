@@ -1,4 +1,4 @@
-import { Suspense, useRef, useEffect } from "react";
+import { Suspense, useRef, useEffect, lazy } from "react";
 import { useVerifyUserId } from "../hooks/fetchDataVi";
 import { useRenderSession } from "vtex.session-client";
 import { Spinner } from "vtex.styleguide";
@@ -7,6 +7,7 @@ import Ordenes from "./Ordenes";
 import Summary from "./Summary";
 import styles from "./niveles.css";
 
+const LazyNiveles = lazy(() => import("./Niveles"));
 interface Props {
   userId: string;
 }
@@ -91,7 +92,9 @@ const MisGanancias = (props: Props) => {
           {!loading && !error && (
             <div>
               <div className={styles.misganancias}>
-                <Niveles userId={userId} />
+              <Suspense fallback={<Spinner color={"#f71963"} />}>
+                  <LazyNiveles userId={userId} />
+                </Suspense>
               </div>
               <div className={styles.ordenes__summary}>
                 <Ordenes idLinker={linkerId} />
