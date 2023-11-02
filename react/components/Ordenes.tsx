@@ -75,8 +75,6 @@ const Ordenes = ({ idLinker }: Props) => {
 
   const formatValue = orders[0]?.orderValue
 
-  console.log(formatValue)
- 
   return (
     <div className={styles.earnings__container}>
       <h2 className={styles.earnings__title}>Mis Ganancias</h2>
