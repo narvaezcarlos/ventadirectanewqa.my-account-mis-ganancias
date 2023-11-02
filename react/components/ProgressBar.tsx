@@ -20,7 +20,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ userId }) => {
     } else {
       try {
         const response = await fetch(
-					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/getUserByUserId/${userId}`
 				);
         const responseData = await response.json();
         if (response.ok) {

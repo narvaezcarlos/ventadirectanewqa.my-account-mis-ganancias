@@ -39,7 +39,7 @@ const Summary: React.FC<SummaryProps> = ({ userId }) => {
     } else {
       const fetchData = async () => {
         const result = await axios.get<SummaryData>(
-					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/getUserByUserId/${userId}`
 				);
         setSummary(result.data);
         saveDataToLocalStorageSummary(result.data, key);
