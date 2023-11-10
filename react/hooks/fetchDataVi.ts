@@ -5,11 +5,9 @@ export const useVerifyUserId = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const baseURL = 'https://websvrx.hermeco.com/offcorsspersonalization/public/';
-
   const fetchData = (userId:string) => {
     setLoading(true);
-    fetch(`${baseURL}api/ventadirectanew/getUserByUserId/${userId}`, {
+    fetch(`https://carlosgiovanny--ventadirectanewqa.myvtex.com/usersById/${userId}`, {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',

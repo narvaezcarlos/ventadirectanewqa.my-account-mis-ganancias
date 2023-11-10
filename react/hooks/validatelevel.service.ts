@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export const useVerifyUserId = (userId: string) => {
-
- const baseURL = 'https://websvrx.hermeco.com/offcorsspersonalization/public/'
- 
   useEffect(() => {
-      fetch(`${baseURL}api/linkapp/getNiveles`)
-				.then((response) => {
-				})
-				.catch((err) => {});
+    fetch(`https://carlosgiovanny--ventadirectanewqa.myvtex.com/levelsLinker`)
+      .then((response) => {})
+      .catch((err) => {});
   }, []);
 };

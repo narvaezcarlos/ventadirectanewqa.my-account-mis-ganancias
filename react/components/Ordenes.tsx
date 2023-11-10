@@ -27,7 +27,7 @@ const Ordenes = ({ idLinker }: Props) => {
     } else {
       const fetchData = async () => {
         const response = await axios.get(
-					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/orderLinkers/${idLinker}`
+					`https://carlosgiovanny--ventadirectanewqa.myvtex.com/profitsByIdLinker/${idLinker}`
 				);
         setOrders(response.data);
         sessionStorage.setItem('orders', JSON.stringify(response.data));
