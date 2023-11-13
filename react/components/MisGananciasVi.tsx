@@ -1,4 +1,4 @@
-import { Suspense, useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useVerifyUserId } from "../hooks/fetchDataVi";
 import { useRenderSession } from "vtex.session-client";
 import { Spinner } from "vtex.styleguide";
@@ -91,7 +91,7 @@ const MisGanancias = (props: Props) => {
           {!loading && !error && (
             <div>
               <div className={styles.misganancias}>
-                <Niveles userId={userId} />
+                  <Niveles userId={userId}  />
               </div>
               <div className={styles.ordenes__summary}>
                 <Ordenes idLinker={linkerId} />

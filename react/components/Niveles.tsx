@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import styles from './niveles.css'
 import ProgressBar from "./ProgressBar";
 
@@ -14,49 +14,61 @@ interface NivelesProps {
 const Niveles: React.FC<NivelesProps> = ({ userId }) => {
   const [niveles, setNiveles] = useState<Nivel[]>([]);
   const [userLevel, setUserLevel] = useState<number | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const getData = React.useCallback(async () => {
-    const storedData = sessionStorage.getItem('nivelesData');
-    if (storedData) {
-      setNiveles(JSON.parse(storedData));
-    } else {
-      const data = await fetch(
-				'https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getNiveles'
-			);
-      const response = await data.json();
-      setNiveles(response);
-      sessionStorage.setItem('nivelesData', JSON.stringify(response));
-    }
-  }, []);
-
-  const getUserLevel = React.useCallback(async () => {
-    if (userId) {
-      const storedUserData = sessionStorage.getItem('userlevel');
-      if (storedUserData) {
-        const userData = JSON.parse(storedUserData);
-        const userLevel = userData.nivel;
-        setUserLevel(userLevel);
-
-      } else {
-        const response = await fetch(
-					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
-				);
-        const userData = await response.json();
-        const userLevel = userData.nivel;
-        setUserLevel(userLevel);
-        sessionStorage.setItem('userlevel', JSON.stringify(userData));
-      }
-    }
-  }, [userId]);
-
+  const [isTendero, setIsTendero] = useState<boolean>(false)
   useEffect(() => {
-    getData();
-    getUserLevel();
-  }, [userId, getData, getUserLevel]);
+    const storedUserData = sessionStorage.getItem('userlevel');
+
+    if (!storedUserData) {
+      (
+        async function () {
+          setLoading(true)
+          const dataUsersById = await fetch(
+            `https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/getUserByUserId/${userId}`
+          );
+          const userData = await dataUsersById.json();
+          const userLevel = userData.nivel;
+          if (userData.linkerType === "Tendero") {
+            setIsTendero(true)
+          }
+          setUserLevel(userLevel);
+          sessionStorage.setItem('userlevel', JSON.stringify(userData));
+
+          const dataLevels = await fetch(
+            'https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/getNiveles'
+          );
+          const responseLevel = await dataLevels.json();
+          setNiveles(responseLevel);
+          sessionStorage.setItem('nivelesData', JSON.stringify(responseLevel));
+          setLoading(false)
+        }
+      )()
+    }
+
+    if (storedUserData) {
+      setLoading(true)
+      const userData = JSON.parse(storedUserData);
+
+      if (userData.linkerType === "Tendero") {
+        setIsTendero(true)
+      }
+      const userLevel = userData.nivel;
+      setUserLevel(userLevel);
+
+      const storedData = sessionStorage.getItem('nivelesData');
+      if (storedData) {
+        setNiveles(JSON.parse(storedData));
+      }
+      setLoading(false)
+    }
+  }, [])
 
   return (
     <>
-  <div className={styles.niveles__niveles}>
+    {
+      loading ? null :
+    !isTendero ? (<div className={styles.niveles__niveles}>
         <h2 className={styles.niveles__title}>
           Mi nivel
         </h2>
@@ -91,7 +103,7 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
             ))}
         </div>
         </div>
-    </div>
+    </div>) : null }
     </>
     );
 };

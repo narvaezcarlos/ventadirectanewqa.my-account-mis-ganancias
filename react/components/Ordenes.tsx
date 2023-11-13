@@ -27,7 +27,7 @@ const Ordenes = ({ idLinker }: Props) => {
     } else {
       const fetchData = async () => {
         const response = await axios.get(
-					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/orderLinkers/${idLinker}`
+					`https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/orderLinkers/${idLinker}`
 				);
         setOrders(response.data);
         sessionStorage.setItem('orders', JSON.stringify(response.data));
@@ -75,8 +75,6 @@ const Ordenes = ({ idLinker }: Props) => {
 
   const formatValue = orders[0]?.orderValue
 
-  console.log(formatValue)
- 
   return (
     <div className={styles.earnings__container}>
       <h2 className={styles.earnings__title}>Mis Ganancias</h2>

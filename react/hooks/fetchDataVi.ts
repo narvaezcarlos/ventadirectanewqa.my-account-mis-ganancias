@@ -9,7 +9,7 @@ export const useVerifyUserId = () => {
 
   const fetchData = (userId:string) => {
     setLoading(true);
-    fetch(`${baseURL}api/linkapp/getUserByUserId/${userId}`, {
+    fetch(`${baseURL}api/ventadirectanew/getUserByUserId/${userId}`, {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
