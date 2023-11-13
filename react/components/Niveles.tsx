@@ -25,7 +25,7 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
         async function () {
           setLoading(true)
           const dataUsersById = await fetch(
-            `https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/getUserByUserId/${userId}`
+            `https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getUserByUserId/${userId}`
           );
           const userData = await dataUsersById.json();
           const userLevel = userData.nivel;
@@ -36,7 +36,7 @@ const Niveles: React.FC<NivelesProps> = ({ userId }) => {
           sessionStorage.setItem('userlevel', JSON.stringify(userData));
 
           const dataLevels = await fetch(
-            'https://websvrx.hermeco.com/offcorsspersonalization/public/api/ventadirectanew/getNiveles'
+            'https://websvrx.hermeco.com/offcorsspersonalization/public/api/linkapp/getNiveles'
           );
           const responseLevel = await dataLevels.json();
           setNiveles(responseLevel);
