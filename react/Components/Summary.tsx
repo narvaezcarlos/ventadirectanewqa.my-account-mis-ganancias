@@ -68,7 +68,8 @@ const Summary = () => {
         <p className={styles.summary__paragraph}
           style={{ width: '100%', textAlign: 'center' }}
         >
-          En 1 mes has registrado el siguiente total de ganancias como Linker:
+          En  {summary?.createdIn && getMonths(summary?.createdIn)}
+          {summary?.createdIn && getMonths(summary?.createdIn) === 1 ? " mes" : " meses"} mes has registrado el siguiente total de ganancias como Linker:
         </p>
       </div>
 
