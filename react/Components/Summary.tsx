@@ -7,7 +7,6 @@ import QRCode from "react-qr-code";
 
 const Summary = () => {
   const { summary } = useGlobalContext()
-  console.log('🚀👉 summary',summary?.linkQR) 
 
   const earnings = summary?.ganancia ? summary.ganancia : 0;
   const contable = earnings.toLocaleString("es-ES", { useGrouping: true });
@@ -21,7 +20,7 @@ const Summary = () => {
           style={{ width: '20%' }}
         >Mi link:</span>
         <p className={styles.summary__paragraph}
-          style={{ width: '80%', fontSize: '13px' }}
+          style={{ width: '80%', fontSize: '14px' }}
         >
           https://www.linkapp.com.co/tienda?id={summary?.linkerId}
         </p>
@@ -44,6 +43,18 @@ const Summary = () => {
             value={`https://www.linkapp.com.co/tienda?id=${summary?.linkerId}%26src=${summary.linkerType}`}
             viewBox={`0 0 256 256`}
           />
+
+          {summary.phone &&
+            <div className={styles.btn_share}>
+              <a 
+                className={styles.link_btn_share} 
+                href={`https://api.whatsapp.com/send?phone=${summary.phone}&text=Hola, Este es mi código de compra!`}
+                target='__blank'>
+                Compartir QR
+
+              </a>
+           </div>
+          }
         </div>
       }
 

@@ -36,10 +36,18 @@
     justify-content: space-evenly;
   }
 
+  .container__btn__return {
+    width: 100%;
+    padding: .5rem;
+  }
+
   /* Estilos Mis ganancias*/
   .ordenes__summary {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding-inline: 1em;
   }
 
   .spinner__container {
@@ -66,9 +74,6 @@
     cursor: pointer;
   }
 
-  .container__btn__return {
-    padding: 1rem;
-  }
 
 
   .niveles__bar {

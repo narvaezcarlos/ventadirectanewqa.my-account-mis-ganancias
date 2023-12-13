@@ -1,11 +1,10 @@
 .summary__container {
   border-radius: 16px;
-  max-width: 40%;
+  max-width: 42%;
   height: 50%;
   padding: 9px 20px;
   background: #fff;
   box-shadow: 0px 6px 6px rgba(135, 135, 135, 0.15);
-  margin-top: 10%;
   border: 1px solid #170341;
 }
 
@@ -45,6 +44,29 @@
   display: flex;
   align-items: center;
   padding-inline: .3em;
+}
+
+.btn_share {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.link_btn_share {
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  background-color: #170341;
+  color: #fff;
+  border-radius: 10px;
+  width: 40%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .summary__earnings {

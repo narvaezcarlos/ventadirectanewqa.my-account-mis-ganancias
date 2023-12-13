@@ -5,4 +5,5 @@ interface Summary {
   linkQR: string;
   updatedIn: string;
   linkerType: string
+  phone: string;
 }
