@@ -2,11 +2,12 @@ import React from 'react'
 import { useGlobalContext } from '../context/GlobalContext';
 import styles from '../styles/summary.module.css';
 import { formatDate, getMonths } from '../utils/formatDate';
-
+import QRCode from "react-qr-code";
 
 
 const Summary = () => {
   const { summary } = useGlobalContext()
+  console.log('🚀👉 summary',summary?.linkQR) 
 
   const earnings = summary?.ganancia ? summary.ganancia : 0;
   const contable = earnings.toLocaleString("es-ES", { useGrouping: true });
@@ -25,6 +26,26 @@ const Summary = () => {
           https://www.linkapp.com.co/tienda?id={summary?.linkerId}
         </p>
       </div>
+
+      {summary?.linkQR &&
+        <div className={styles.summary__container__text}
+          style={{
+            justifyContent: 'center',
+            flexDirection: 'column'
+          }}>
+          <p className={styles.summary__paragraph}
+            style={{ width: '100%', textAlign: 'center' }}
+          >
+            Escanea o toma una foto al código QR y compártelo!
+          </p>
+          <QRCode
+            size={256}
+            style={{ height: "auto", maxWidth: "40%", width: "40%" }}
+            value={`https://www.linkapp.com.co/tienda?id=${summary?.linkerId}%26src=${summary.linkerType}`}
+            viewBox={`0 0 256 256`}
+          />
+        </div>
+      }
 
       <div className={styles.summary__container__text}      >
         <p className={styles.summary__paragraph}
@@ -60,7 +81,7 @@ const Summary = () => {
         <span className={styles.summary__span}>Meses como linker:</span>
         <p className={styles.summary__paragraph}>
           {summary?.createdIn && getMonths(summary?.createdIn)}
-          {summary?.createdIn && getMonths(summary?.createdIn) === 1 ? " mes" : " meses"}
+          {summary?.createdIn && getMonths(summary?.createdIn) > 1 ? " mes" : " meses"}
         </p>
       </div>
 
@@ -69,7 +90,7 @@ const Summary = () => {
           style={{ width: '100%', textAlign: 'center' }}
         >
           En  {summary?.createdIn && getMonths(summary?.createdIn)}
-          {summary?.createdIn && getMonths(summary?.createdIn) === 1 ? " mes" : " meses"} mes has registrado el siguiente total de ganancias como Linker:
+          {summary?.createdIn && getMonths(summary?.createdIn) > 1 ? " mes" : " meses"} mes has registrado el siguiente total de ganancias como Linker:
         </p>
       </div>
 

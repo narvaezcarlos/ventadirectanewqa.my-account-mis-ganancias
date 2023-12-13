@@ -4,4 +4,5 @@ interface Summary {
   linkerId: string;
   linkQR: string;
   updatedIn: string;
+  linkerType: string
 }

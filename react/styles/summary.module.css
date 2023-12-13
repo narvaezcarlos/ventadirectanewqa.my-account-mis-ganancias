@@ -1,12 +1,12 @@
 .summary__container {
   border-radius: 16px;
-  max-width: 35%;
-  padding: .5em;
+  max-width: 40%;
+  height: 50%;
+  padding: 9px 20px;
   background: #fff;
   box-shadow: 0px 6px 6px rgba(135, 135, 135, 0.15);
   margin-top: 10%;
   border: 1px solid #170341;
-  gap: .5em;
 }
 
 .summary__title {

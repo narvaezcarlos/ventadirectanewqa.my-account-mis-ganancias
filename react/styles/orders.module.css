@@ -38,21 +38,20 @@
 
 .results__container {
     box-shadow: 0px 6px 5px 2px rgba(135, 135, 135, 0.15);
-    margin: 10px 0px;
     padding: 5px 15px;
     width: 100%;
     border-radius: 16px;
 }
 
 .results__title {
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 20px;
+    line-height: 24px;
     color: #170341;
 }
 
 .results__text {
     font-size: 16px;
-    line-height: 24px;
+    line-height: 12px;
     color: #404040;
 }
 

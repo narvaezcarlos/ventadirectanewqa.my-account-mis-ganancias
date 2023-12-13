@@ -78,7 +78,7 @@ const Orders = () => {
           <div className={styles.results}>
             {currentOrders.map((order, index) => (
               <div className={styles.results__container} key={index}>
-                <h3 className={styles.results__title}>{order.firstName}</h3>
+                <h3 className={styles.results__title}>{order.firstName}{" "}{order.lastName}</h3>
                 <p className={styles.results__text}><span className={styles.results__span}> Orden ID: </span> {order.orderId}</p>
                 <p className={styles.results__text}><span className={styles.results__span}>Fecha de compra: </span> {new Date(order.orderDate).toLocaleDateString('es-ES', options)}</p>
                 <p className={styles.results__text}><span className={styles.results__span}>Total de la compra: </span>{(Number((order?.orderValue) / 100).toLocaleString('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }))} </p>

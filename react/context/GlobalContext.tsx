@@ -48,7 +48,8 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
           ganancia: userData.ganancia,
           linkerId: userData.linkerId,
           linkQR: userData.linkQR,
-          updatedIn: userData.updatedIn
+          updatedIn: userData.updatedIn,
+          linkerType:userData.linkerType
         })
 
         const profits = await fetch(
