@@ -1,24 +1,25 @@
 {
   "name": "my-account-mis-ganancias",
   "vendor": "ventadirectanew",
-  "version": "0.0.20",
+  "version": "0.0.28",
   "title": "My Account Mis Ganancias",
   "description": "My Account Mis Ganancias Linkers",
-  "mustUpdateAt": "2019-07-09",
+  "mustUpdateAt": "2023-12-12",
+  "builders": {
+    "docs": "0.x",
+    "messages": "1.x",
+    "react": "3.x",
+    "store": "0.x"
+  },
   "dependencies": {
     "vtex.my-account": "1.x",
     "vtex.styleguide": "9.x",
-    "vtex.store-graphql": "2.x",
     "vtex.my-account-commons": "1.x",
     "vtex.session-client": "1.x"
   },
-  "builders": {
-    "react": "3.x",
-    "messages": "1.x",
-    "store": "0.x"
-  },
-  "scripts": {
-    "postreleasy": "vtex publish --verbose"
-  },
+  "registries": [
+    "smartcheckout"
+  ],
+  "policies": [],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

@@ -1,15 +1,9 @@
 declare module '*.css' {
-    type Styles = {
-      [selector: string]: string
-    }
-  
-    const styles: Styles
-  
-    export default styles
+  type Styles = {
+    [selector: string]: string
   }
 
+  const styles: Styles
 
-  declare module '@vtex/styleguide';
-
-
-  declare module '@vtex/styleguide/lib/Spinner'
+  export default styles
+}
