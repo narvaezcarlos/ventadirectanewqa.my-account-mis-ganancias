@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from '../context/GlobalContext';
 import styles from '../styles/summary.module.css';
 import { formatDate, getMonths } from '../utils/formatDate';
-import QRCode from "react-qr-code";
 
 
 const Summary = () => {
   const { summary } = useGlobalContext()
+  const [redirect, setRedirect] = useState<string>();
 
   const earnings = summary?.ganancia ? summary.ganancia : 0;
   const contable = earnings.toLocaleString("es-ES", { useGrouping: true });
+
+
+  useEffect(() => {
+    setRedirect(encodeURIComponent(`https://www.linkapp.com.co/tienda?id=${summary?.linkerId}&src=${summary?.linkerType}`))
+   }, [summary])
 
   return (
     <div className={styles.summary__container}>
@@ -37,23 +42,21 @@ const Summary = () => {
           >
             Escanea o toma una foto al código QR y compártelo!
           </p>
-          <QRCode
-            size={256}
-            style={{ height: "auto", maxWidth: "40%", width: "40%" }}
-            value={`https://www.linkapp.com.co/tienda?id=${summary?.linkerId}%26src=${summary.linkerType}`}
-            viewBox={`0 0 256 256`}
+
+          <img
+            className={styles.img_qr}
+            src={`${summary.linkQR}`}
           />
 
           {summary.phone &&
             <div className={styles.btn_share}>
-              <a 
-                className={styles.link_btn_share} 
-                href={`https://api.whatsapp.com/send?phone=${summary.phone}&text=Hola, Este es mi código de compra!`}
+              <a
+                className={styles.link_btn_share}
+                href={`https://api.whatsapp.com/send?text=${redirect}`}
                 target='__blank'>
                 Compartir QR
-
               </a>
-           </div>
+            </div>
           }
         </div>
       }
