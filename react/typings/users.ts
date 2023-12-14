@@ -5,7 +5,7 @@ interface User {
   linkerId: string;
   linkerType: string;
   linkQR: string;
-  nivel: number;
+  nivel: string;
   profilePicture?: any;
   isCorporate?: any;
   tradeName?: any;

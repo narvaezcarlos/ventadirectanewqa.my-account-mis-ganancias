@@ -36,7 +36,15 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
 
         setUser(userData)
 
-        setUserLevel(Number(userData.nivel))
+        if (userData.nivel.includes('1')) {
+          setUserLevel(1)
+        }
+        if (userData.nivel.includes('2')) {
+          setUserLevel(2)
+        }
+        if (userData.nivel.includes('3')) {
+          setUserLevel(3)
+        }
 
         setStatus(userData.isLinker)
 

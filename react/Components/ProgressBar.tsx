@@ -9,7 +9,7 @@ const ProgressBar = () => {
     user,
     minProfits,
     maxProfits, } = useGlobalContext()
-
+    
 
   function getActiveCircle(index: number) {
     if (!user) {
@@ -17,9 +17,10 @@ const ProgressBar = () => {
     }
 
     const ganancia = user.ganancia;
+    
     switch (index) {
       case 0:
-        return user?.ganancia > minProfits && ganancia <= (maxProfits / 2);
+        return ganancia >= minProfits && ganancia <= (maxProfits / 2);
       case 1:
         return ganancia >= (maxProfits / 2 + 1) && ganancia < maxProfits
       case 2:
