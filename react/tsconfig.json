@@ -1,24 +1,12 @@
 {
-	"@vtex/tsconfig": "^0.4.4",
-	"compilerOptions": {
-		"noEmitOnError": false,
-		"target": "es2017",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noEmit": true,
-		"jsx": "react-jsx",
-		"baseUrl": "./src",
-		"typeRoots": ["node_modules/@types"],
-		"types": ["node"]
-	},
-	"include": ["./typings/*.d.ts", "./**/*.tsx", "./**/*.ts"]
+  "extends": "@vtex/tsconfig",
+  "compilerOptions": {
+    "noEmitOnError": false,
+    "lib": ["dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es2017",
+    "jsx": "preserve"
+  },
+  "include": ["./typings/*.d.ts", "./**/*.tsx", "./**/*.ts"]
 }

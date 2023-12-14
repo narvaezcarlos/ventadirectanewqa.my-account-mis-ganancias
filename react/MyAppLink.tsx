@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FunctionComponent } from 'react';
 import { useIntl } from 'react-intl';
 
@@ -16,12 +16,16 @@ const MyAppLink: FunctionComponent<MyAppLinkProps> = ({ render }) => {
 
   const links: Link[] = [
     {
-      name: intl.formatMessage({ id: 'store/misGanancias.link' }),
+      name: intl.formatMessage({ id: 'store-misGanancias.label' }),
       path: '/mis-ganancias',
     },
   ];
 
-  return <>{render(links)}</>;
+  return (
+    <Fragment>
+      {render(links)}
+    </Fragment>
+  );
 };
 
 export default MyAppLink;
