@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useRenderSession } from "vtex.session-client";
+import { globalUrl } from "../config";
 
 
 
@@ -28,7 +29,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         const linkerId = session?.namespaces?.profile?.document?.value;
 
         const dataUser = await fetch(
-          `https://carlosgiovanny--ventadirectanewqa.myvtex.com/usersById/${userId}`
+          `${globalUrl}/usersById/${userId}`
         );
 
         const userData: User = await dataUser.json();
@@ -54,7 +55,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         })
 
         const profits = await fetch(
-          `https://carlosgiovanny--ventadirectanewqa.myvtex.com/profitsByIdLinker/${linkerId}`
+          `${globalUrl}/profitsByIdLinker/${linkerId}`
         );
 
         const profitsUser = await profits.json();
@@ -64,7 +65,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         }
 
         const getLevels = await fetch(
-          'https://carlosgiovanny--ventadirectanewqa.myvtex.com/levelsLinker'
+          `${globalUrl}/levelsLinker`
         );
 
         const dataLevels: Array<Level> = await getLevels.json();
