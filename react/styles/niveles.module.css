@@ -44,8 +44,8 @@
   /* Estilos Mis ganancias*/
   .ordenes__summary {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 2em;
     padding-inline: 1em;
   }
