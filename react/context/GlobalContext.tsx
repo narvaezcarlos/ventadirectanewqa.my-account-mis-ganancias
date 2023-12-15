@@ -29,7 +29,19 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         const linkerId = session?.namespaces?.profile?.document?.value;
 
         const dataUser = await fetch(
-          `${globalUrl}/usersById/${userId}`
+          `${globalUrl}/usersById/${userId}`,
+          {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+          }
         );
 
         const userData: User = await dataUser.json();
@@ -63,7 +75,19 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         })
 
         const profits = await fetch(
-          `${globalUrl}/profitsByIdLinker/${linkerId}`
+          `${globalUrl}/profitsByIdLinker/${linkerId}`,
+          {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+          }
         );
 
         const profitsUser = await profits.json();
@@ -73,7 +97,19 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         }
 
         const getLevels = await fetch(
-          `${globalUrl}/levelsLinker`
+          `${globalUrl}/levelsLinker`,
+          {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+          }
         );
 
         const dataLevels: Array<Level> = await getLevels.json();
