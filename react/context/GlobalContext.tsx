@@ -1,8 +1,5 @@
 import { ReactNode, createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useRenderSession } from "vtex.session-client";
-import { globalUrl } from "../config";
-
-
 
 const GlobalContext = createContext<GlobalContextProps | null>(null)
 
@@ -29,7 +26,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         const linkerId = session?.namespaces?.profile?.document?.value;
 
         const dataUser = await fetch(
-          `${globalUrl}/usersById/${userId}`,
+          `/usersById/${userId}`,
           {
             method: "GET",
             mode: "no-cors",
@@ -75,7 +72,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         })
 
         const profits = await fetch(
-          `${globalUrl}/profitsByIdLinker/${linkerId}`,
+          `/profitsByIdLinker/${linkerId}`,
           {
             method: "GET",
             mode: "no-cors",
@@ -92,12 +89,14 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
 
         const profitsUser = await profits.json();
 
-        if (profitsUser.length) {
-          setProfits(profitsUser)
+        if (!profitsUser.message) {
+          if (profitsUser.length) {
+            setProfits(profitsUser)
+          }
         }
 
         const getLevels = await fetch(
-          `${globalUrl}/levelsLinker`,
+          `/levelsLinker`,
           {
             method: "GET",
             mode: "no-cors",

@@ -7,4 +7,5 @@ interface Profits {
   idLinker: string;
   orderDate: string;
   orderValue: number;
+  message?: string
 }
