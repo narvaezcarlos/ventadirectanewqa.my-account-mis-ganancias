@@ -32,7 +32,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
           `${globalUrl}/usersById/${userId}`,
           {
             method: "GET",
-            mode: "cors",
+            mode: "no-cors",
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
@@ -78,7 +78,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
           `${globalUrl}/profitsByIdLinker/${linkerId}`,
           {
             method: "GET",
-            mode: "cors",
+            mode: "no-cors",
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
@@ -100,7 +100,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
           `${globalUrl}/levelsLinker`,
           {
             method: "GET",
-            mode: "cors",
+            mode: "no-cors",
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
