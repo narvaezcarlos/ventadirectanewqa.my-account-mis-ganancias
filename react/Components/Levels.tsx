@@ -20,7 +20,7 @@ const Levels = () => {
             <ProgressBar />
 
             <div className={styles.niveles}>
-              {levels.map(level => (
+              {levels.sort((a, b) => a.id.localeCompare(b.id)).map(level => (
                 <div
                   key={level.id}
                   className={styles.niveles__container}
