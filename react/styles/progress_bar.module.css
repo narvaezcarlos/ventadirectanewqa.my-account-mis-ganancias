@@ -53,16 +53,37 @@
   background-color: #170341;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and  (min-width: 721px) {
   .progress__bar {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100%;
-    width: 5px;
-    margin-top: 0;
-    margin: 0;
+    width: 45vh;
+    height: 5px;
     position: absolute;
+    transform: rotate(90deg);
+    left: 35vh;
+    top: 50%;
+  }
+
+  .progress__bar.active {
+    transform: rotate(0);
+    left: 0%;
+    top: -300%;
+  }
+}
+
+@media (max-width: 720px) {
+  .progress__bar {
+    width: 45vh;
+    height: 5px;
+    position: absolute;
+    transform: rotate(90deg);
+    left: -20vh;
+    top: 50%;
+  }
+
+  .progress__bar.active {
+    transform: rotate(0);
+    left: 0%;
+    top: -300%;
   }
 
   .progress__bar__step {

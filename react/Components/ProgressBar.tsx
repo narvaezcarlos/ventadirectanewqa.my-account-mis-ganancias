@@ -9,7 +9,7 @@ const ProgressBar = () => {
     user,
     minProfits,
     maxProfits, } = useGlobalContext()
-    
+
 
   function getActiveCircle(index: number) {
     if (!user) {
@@ -17,7 +17,7 @@ const ProgressBar = () => {
     }
 
     const ganancia = user.ganancia;
-    
+
     switch (index) {
       case 0:
         return ganancia >= minProfits && ganancia <= (maxProfits / 2);
@@ -35,14 +35,14 @@ const ProgressBar = () => {
 
   return (
     <div className={styles.progress__bar}>
-      {levels.length && levels.map((_, index) => (
+      {levels.length && levels.sort((a, b) => a.id.localeCompare(b.id)).map((_, index) => (
         <div key={index} className={styles.progress__bar__step}>
           <div className={`${styles.progress__bar__step__circle} ${getActiveCircle(index) ? styles.active : ''}`} />
         </div>
       ))
 
       }
-      <div 
+      <div
       className={`${styles.progress__bar} ${ styles.active}`}
       style={{
         width:`${completed}%`
