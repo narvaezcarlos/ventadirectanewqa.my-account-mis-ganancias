@@ -21,8 +21,9 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     (async function () {
       if (session) {
         setLoading(true)
+        //@ts-ignore
         const userId = session?.namespaces?.authentication?.storeUserId?.value;
-
+        //@ts-ignore
         const linkerId = session?.namespaces?.profile?.document?.value;
 
         const dataUser = await fetch(
@@ -57,7 +58,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
 
         setStatus(userData.isLinker)
 
-        if (userData.linkerType === 'Tendero') {
+        if (userData.linkerType === 'Tendero' || userData.linkerType === 'Cangu') {
           setIsShopkeeper(true)
         }
 
