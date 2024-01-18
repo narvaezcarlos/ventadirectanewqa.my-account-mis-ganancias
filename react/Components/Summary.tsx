@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from '../context/GlobalContext';
 import styles from '../styles/summary.module.css';
 import { formatDate, getMonths } from '../utils/formatDate';
-
+import QRCode from 'react-qr-code';
 
 const Summary = () => {
   const { summary } = useGlobalContext()
@@ -14,7 +14,7 @@ const Summary = () => {
 
   useEffect(() => {
     setRedirect(encodeURIComponent(`https://www.linkapp.com.co/tienda?id=${summary?.linkerId}&src=${summary?.linkerType}`))
-   }, [summary])
+  }, [summary])
 
   return (
     <div className={styles.summary__container}>
@@ -43,9 +43,9 @@ const Summary = () => {
             Escanea o toma una foto al código QR y compártelo!
           </p>
 
-          <img
+          <QRCode
             className={styles.img_qr}
-            src={`${summary.linkQR}`}
+            value={`${redirect}`}
           />
 
           {summary.phone &&
