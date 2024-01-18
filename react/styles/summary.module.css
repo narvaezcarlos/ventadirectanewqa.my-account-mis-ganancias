@@ -51,7 +51,7 @@
 .img_qr{
   width: 15em;
   height: 15em;
-  margin: 0 auto;
+  margin: .5rem auto .5rem auto;
 }
 
 .btn_share {
