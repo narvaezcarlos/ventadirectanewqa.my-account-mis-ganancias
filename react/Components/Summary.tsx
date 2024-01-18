@@ -45,7 +45,7 @@ const Summary = () => {
 
           <QRCode
             className={styles.img_qr}
-            value={`${redirect}`}
+            value={`https://www.linkapp.com.co/tienda?id=${summary?.linkerId}&src=${summary?.linkerType}`}
           />
 
           {summary.phone &&
